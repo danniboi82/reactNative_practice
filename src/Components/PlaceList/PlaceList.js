@@ -5,7 +5,10 @@ import List from '../List/List';
 
 const placeList = (props) => {
     const placesOutput = props.places.map((place, i) => (
-        <List key={i} placename={place} onItemPressed={()=>{alert(`${i} and ${place}`)}} />
+        <List 
+        key={i} 
+        placename={place} 
+        onItemPressed={()=> props.onItemDeleted(i)} />
     ))
     return (
         <View style={styles.placesOutput}>
@@ -13,7 +16,7 @@ const placeList = (props) => {
         </View>
     )
 }
-
+    
 const styles = StyleSheet.create({
     placesOutput: {
         width: '80%',
