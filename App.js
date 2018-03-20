@@ -11,16 +11,19 @@ export default class App extends Component {
   addPlaceHandler = (placename) => {
     this.setState(prevState => {
       return {
-        placesArray: prevState.placesArray.concat(placename)
+        placesArray: prevState.placesArray.concat({
+          key: Math.random(), 
+          value: placename
+        })
       };
-    })
-  }
-
-  placeDeletedHandler = index => {
+    });
+  };
+  
+  placeDeletedHandler = key => {
     this.setState(prevState => {
       return {
-        placesArray: prevState.placesArray.filter((place, i) => {
-          return i !== index;
+        placesArray: prevState.placesArray.filter((place) => {
+          return place.key !== key;
         })
       };
     });
@@ -41,8 +44,9 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    padding: 26,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "flex-start"
   },
 });
