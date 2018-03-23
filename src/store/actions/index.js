@@ -1,0 +1,1 @@
+export { addPlace , delPlace, selPlace, deselPlace } from './places';
